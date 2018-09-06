@@ -17,9 +17,11 @@ const result = ansiToSVG(ansiText, {
 	fontFamily: 'Courier',
   container,
   containerOptions: {
-    title: 'Terminal',
-  },
-  scale: 2,
+    title: '⚡️Terminal',
+	},
+	colors: {
+		foregroundColor: '#FFFFFF',
+	},
 })
 const outputFile = './examples/terminal.svg'
 fs.writeFileSync(outputFile, result)
