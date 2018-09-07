@@ -8,7 +8,7 @@ const defaultContainer = ({
 	}
 	const attrsString = attrs.length ? ` ${attrs.join(' ')}` : ''
 
-	return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0, 0, ${width}, ${height}"${attrsString}><g fill="${foregroundColor}"><rect x="0" y="0" width="${width}" height="${height}" fill="#${backgroundColor}"/>${content}</g></svg>`
+	return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0, 0, ${width}, ${height}"${attrsString}><g fill="${foregroundColor}"><rect x="0" y="0" width="${width}" height="${height}" fill="${backgroundColor}"/>${content}</g></svg>`
 }
 
 module.exports = defaultContainer
