@@ -49,14 +49,14 @@ const decorators = {
 	container: ({
 		backgroundColor,
 		foregroundColor, content, width, height, font, container = defaultContainer,
-		containerOptions = {},
+		containerOptions = {}
 	}) => {
 		height = round(height)
 		width = round(width)
 
 		const containerTemplate = container({
 			foregroundColor, content, width, height, font,
-			backgroundColor, ...containerOptions,
+			backgroundColor, ...containerOptions
 		})
 		return containerTemplate
 	}
@@ -201,7 +201,7 @@ const handler = (ansi, opts) => {
 		content,
 		width,
 		height,
-		font,
+		font
 	}
 	return decorators.container(baseStyles)
 }

@@ -1,5 +1,5 @@
 const defaultContainer = ({
-	foregroundColor, content, width, height, backgroundColor, font,
+	foregroundColor, content, width, height, backgroundColor, font
 }) => {
 	const attrs = []
 	if (font) {

@@ -1,7 +1,7 @@
 const fs = require('fs')
 const chalk = require('chalk')
-const ansiToSVG = require('.')
 const container = require('./containers/terminal')
+const ansiToSVG = require('.')
 
 const ansiText = chalk`{green 👋 Hello}, {blueBright World} 🌏{redBright !}\n` +
 	chalk.bgRed('👋') +
@@ -15,17 +15,17 @@ const ansiText = chalk`{green 👋 Hello}, {blueBright World} 🌏{redBright !}\
 
 const result = ansiToSVG(ansiText, {
 	fontFamily: 'Courier',
-  container,
-  containerOptions: {
+	container,
+	containerOptions: {
 		title: '⚡️Terminal',
 		noStretch: true,
 		minWidth: 250,
-		minHeight: 100,
-		// noShadow: true,
+		minHeight: 100
+		// NoShadow: true,
 	},
 	colors: {
-		foregroundColor: '#FFFFFF',
-	},
+		foregroundColor: '#FFFFFF'
+	}
 })
 const outputFile = './examples/terminal.svg'
 fs.writeFileSync(outputFile, result)
