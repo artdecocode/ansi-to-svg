@@ -17,7 +17,11 @@ const result = ansiToSVG(ansiText, {
 	fontFamily: 'Courier',
   container,
   containerOptions: {
-    title: '⚡️Terminal',
+		title: '⚡️Terminal',
+		noStretch: true,
+		minWidth: 250,
+		minHeight: 100,
+		// noShadow: true,
 	},
 	colors: {
 		foregroundColor: '#FFFFFF',
