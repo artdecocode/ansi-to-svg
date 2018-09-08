@@ -47,16 +47,16 @@ const decorators = {
 	},
 
 	container: ({
-		backgroundColor,
-		foregroundColor, content, width, height, font, container = defaultContainer,
+		backgroundColor, attributes,
+		foregroundColor, content, width, height, container = defaultContainer,
 		containerOptions = {}
 	}) => {
 		height = round(height)
 		width = round(width)
 
 		const containerTemplate = container({
-			foregroundColor, content, width, height, font,
-			backgroundColor, ...containerOptions
+			foregroundColor, content, width, height, backgroundColor, attributes,
+			...containerOptions
 		})
 		return containerTemplate
 	}
@@ -65,13 +65,8 @@ const decorators = {
 // Some SVG Implementations drop whitespaces
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xml:space
 const adjustXforWhitespace = (text, x) => {
-	const leadingSpace = text.match(/(^ )/g)
-
-	if (leadingSpace && leadingSpace.length > 0) {
-		return x + leadingSpace.length
-	}
-
-	return x
+	const leadingSpace = text.match(/^\s*/g)
+	return x + leadingSpace[0].length
 }
 
 const handler = (ansi, opts) => {
@@ -193,16 +188,26 @@ const handler = (ansi, opts) => {
 		})
 	})
 
+	let attributes = {}
+	if (font) {
+		attributes = {
+			'font-family': font.family,
+			'font-size': font.size
+		}
+	}
+
 	const baseStyles = {
 		container: opts.container,
 		containerOptions: opts.containerOptions,
 		foregroundColor: baseForegroundColor,
 		backgroundColor: opts.colors.backgroundColor,
 		content,
+		attributes,
 		width,
 		height,
 		font
 	}
+
 	return decorators.container(baseStyles)
 }
 

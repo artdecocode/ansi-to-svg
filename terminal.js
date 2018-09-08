@@ -1,6 +1,6 @@
 const fs = require('fs')
 const chalk = require('chalk')
-const container = require('./containers/terminal')
+const container = require('@svag/window')
 const ansiToSVG = require('.')
 
 const ansiText = chalk`{green 👋 Hello}, {blueBright World} 🌏{redBright !}\n` +
@@ -13,19 +13,19 @@ const ansiText = chalk`{green 👋 Hello}, {blueBright World} 🌏{redBright !}\
 	chalk.bgBlue('🎃') +
 	chalk.bgMagenta('🐦')
 
+/** @type {import('@svag/window').WindowOptions} */
+const containerOptions = {
+	title: '⚡️Terminal',
+	noStretch: true,
+	minWidth: 250,
+	minHeight: 100,
+	minify: false,
+	noShadow: true
+}
 const result = ansiToSVG(ansiText, {
 	fontFamily: 'Courier',
 	container,
-	containerOptions: {
-		title: '⚡️Terminal',
-		noStretch: true,
-		minWidth: 250,
-		minHeight: 100
-		// NoShadow: true,
-	},
-	colors: {
-		foregroundColor: '#FFFFFF'
-	}
+	containerOptions
 })
-const outputFile = './examples/terminal.svg'
+const outputFile = 'examples/terminal.svg'
 fs.writeFileSync(outputFile, result)
