@@ -19,8 +19,8 @@ const containerOptions = {
 	noStretch: true,
 	minWidth: 250,
 	minHeight: 100,
-	minify: false,
-	noShadow: true
+	minify: false
+	// NoShadow: true
 }
 const result = ansiToSVG(ansiText, {
 	fontFamily: 'Courier',
